@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@import "react-day-picker/style.css";
+
+:root {
+  --background: #F9F5F0;
+  --foreground: #1C1C1C;
+  --accent: #C4704F;
+  --accent-dark: #A85E3E;
+  --muted: #6B6B6B;
+  --border: #E5E0D8;
+  --surface: #ffffff;
+  --surface-hover: #F0EBE3;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-8px) rotate(-1deg); }
+  30% { transform: translateX(8px) rotate(1deg); }
+  45% { transform: translateX(-6px) rotate(-0.5deg); }
+  60% { transform: translateX(6px) rotate(0.5deg); }
+  75% { transform: translateX(-3px); }
+  90% { transform: translateX(3px); }
+}
+
+.shake {
+  animation: shake 0.55s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+/* react-day-picker overrides */
+.rdp-root {
+  --rdp-accent-color: #C4704F;
+  --rdp-accent-background-color: #F0EBE3;
+  font-size: 0.875rem;
+}
+
+.rdp-day_button:hover:not([disabled]) {
+  background-color: var(--surface-hover);
+}
