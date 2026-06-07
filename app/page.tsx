@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { track } from "@vercel/analytics";
 
 // Each extra "No" tries a little harder to talk Rose into it. After the third
 // no, we drop the persuasion and ask her what would turn it into a yes.
@@ -32,6 +33,7 @@ export default function LandingPage() {
 
   const handleNo = () => {
     if (noCount >= 3) return;
+    track("no_clicked", { stage: noCount + 1 });
     const btn = noButtonRef.current;
     if (btn) {
       btn.classList.remove("shake");
@@ -39,6 +41,11 @@ export default function LandingPage() {
       btn.classList.add("shake");
     }
     setNoCount((c) => c + 1);
+  };
+
+  const handleYes = () => {
+    track("yes_clicked");
+    router.push("/destinations");
   };
 
   const handleSubmitFeedback = async (e: React.FormEvent) => {
@@ -61,6 +68,7 @@ export default function LandingPage() {
         const data = await res.json();
         throw new Error(data.error || "Something went wrong");
       }
+      track("feedback_submitted");
       setDone(true);
     } catch (err) {
       setError(
@@ -169,7 +177,7 @@ export default function LandingPage() {
 
         <div className="flex gap-4 justify-center flex-wrap">
           <button
-            onClick={() => router.push("/destinations")}
+            onClick={handleYes}
             className="px-10 py-4 bg-[#C4704F] text-white text-lg font-bold rounded-xl hover:bg-[#A85E3E] transition-colors shadow-sm"
           >
             Yes, let&apos;s go! 🌍
