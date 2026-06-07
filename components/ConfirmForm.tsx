@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { track } from "@vercel/analytics";
 import { destinations } from "@/lib/destinations";
 import { availableWeekends } from "@/lib/weekends";
 
@@ -55,6 +56,7 @@ export function ConfirmForm({
         throw new Error(data.error || "Something went wrong");
       }
 
+      track("booking_confirmed", { destination: destinationId, weekend: weekendId });
       router.push("/thank-you");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Try again?");

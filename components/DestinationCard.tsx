@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
+import { track } from "@vercel/analytics";
 import { type Destination } from "@/lib/destinations";
 import { type Weekend } from "@/lib/weekends";
 import { getTransportLink } from "@/lib/transport";
@@ -62,13 +63,19 @@ export function DestinationCard({ destination }: Props) {
           {/* About / Photos buttons */}
           <div className="flex gap-2">
             <button
-              onClick={() => setShowAbout(true)}
+              onClick={() => {
+                track("plan_opened", { destination: destination.id });
+                setShowAbout(true);
+              }}
               className="px-4 py-2 text-sm font-medium border border-[#E5E0D8] rounded-lg hover:bg-[#F0EBE3] hover:border-[#C4704F] transition-colors text-[#1C1C1C]"
             >
               The plan
             </button>
             <button
-              onClick={() => setShowPhotos(true)}
+              onClick={() => {
+                track("photos_opened", { destination: destination.id });
+                setShowPhotos(true);
+              }}
               className="px-4 py-2 text-sm font-medium border border-[#E5E0D8] rounded-lg hover:bg-[#F0EBE3] hover:border-[#C4704F] transition-colors text-[#1C1C1C]"
             >
               Photos
@@ -108,6 +115,9 @@ export function DestinationCard({ destination }: Props) {
               href={transportLink.href}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                track("transport_clicked", { destination: destination.id })
+              }
               className="text-sm text-[#C4704F] hover:underline flex items-center gap-2 font-medium"
             >
               {transportLink.emoji} {transportLink.label} →
@@ -124,6 +134,12 @@ export function DestinationCard({ destination }: Props) {
             {confirmUrl ? (
               <Link
                 href={confirmUrl}
+                onClick={() =>
+                  track("destination_chosen", {
+                    destination: destination.id,
+                    weekend: selectedWeekend?.id ?? "",
+                  })
+                }
                 className="block text-center px-6 py-3 bg-[#C4704F] text-white font-semibold rounded-xl hover:bg-[#A85E3E] transition-colors"
               >
                 I'm in →
