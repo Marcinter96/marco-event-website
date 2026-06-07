@@ -187,6 +187,13 @@ export default function LandingPage() {
               : "Really, no 😅"}
           </button>
         </div>
+
+        <a
+          href="/why"
+          className="inline-block mt-8 text-sm text-[#ABABAB] hover:text-[#C4704F] transition-colors underline underline-offset-4 decoration-[#D8CFC2]"
+        >
+          psst… why did I build you a whole website? →
+        </a>
       </div>
 
       <p className="absolute bottom-6 text-xs text-[#ABABAB]">

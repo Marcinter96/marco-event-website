@@ -34,7 +34,7 @@ export const destinations: Destination[] = [
       "Wander through the Altstadt and the winding Niederdorf lanes",
       "Hike up to Uetliberg — sweeping views of the city and the lake",
       "Swim in Lake Zurich, one of the cleanest lakes in Europe",
-      "Homemade dinner at Marco's — wine most definitely included",
+      "Homemade dinner at Marco's — Italian food made with love",
     ],
     heroImage: commonsImage("Zürichsee - Uetliberg IMG 0833.JPG"),
     photos: [
@@ -68,11 +68,11 @@ export const destinations: Destination[] = [
     city: "Crans Montana",
     name: "Weekend in Crans Montana",
     tag: "Mountain escape",
-    tagline: "Alpine hiking, tennis & sushi with a view",
+    tagline: "Alpine hiking, tennis & a spa with a view",
     about: [
       "Hike the mountain trails above the resort — fresh air guaranteed",
       "Hit the tennis courts at altitude (spoiler: it's harder than you think)",
-      "Dinner at a sushi restaurant overlooking the Alps — yes, sushi in the mountains",
+      "Relaxing swimming pool and spa with amazing views over the Alps",
       "Gondola rides, alpine sunsets and absolutely zero city noise",
     ],
     heroImage: "/images/crans-montana-summer-impressions-8.jpg",
