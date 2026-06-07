@@ -56,6 +56,10 @@ export const destinations: Destination[] = [
         url: commonsImage("Zürichsee - Uetliberg IMG 0833.JPG", 800),
         alt: "Lake Zurich seen from Uetliberg",
       },
+      {
+        url: "/images/zurich-spa.jpg",
+        alt: "Rooftop thermal spa pool at sunset over the city",
+      },
     ],
     isRosesCity: false,
   },
@@ -73,6 +77,14 @@ export const destinations: Destination[] = [
     ],
     heroImage: commonsImage("Château de Crans.JPG"),
     photos: [
+      {
+        url: "/images/crans-bridge.jpg",
+        alt: "Suspension footbridge over the valley near Crans Montana",
+      },
+      {
+        url: "/images/crans-bisse.jpg",
+        alt: "Cliffside bisse walkway with alpine views",
+      },
       {
         url: commonsImage("Château de Crans.JPG", 800),
         alt: "Château de Crans with the Alps behind",
@@ -116,6 +128,10 @@ export const destinations: Destination[] = [
       {
         url: commonsImage("Castello sforzesco, milano.JPG", 800),
         alt: "Castello Sforzesco",
+      },
+      {
+        url: "/images/milan-cacio-e-pepe.jpg",
+        alt: "A bowl of cacio e pepe pasta",
       },
     ],
     isRosesCity: false,
