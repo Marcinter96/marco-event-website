@@ -75,7 +75,7 @@ export const destinations: Destination[] = [
       "Dinner at a sushi restaurant overlooking the Alps — yes, sushi in the mountains",
       "Gondola rides, alpine sunsets and absolutely zero city noise",
     ],
-    heroImage: commonsImage("Château de Crans.JPG"),
+    heroImage: "/images/crans-montana-summer-impressions-8.jpg",
     photos: [
       {
         url: "/images/crans-bridge.jpg",

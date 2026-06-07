@@ -6,11 +6,24 @@ export interface TransportLink {
   emoji: string;
 }
 
+// CFF/SBB online timetable deeplink (French site). The webshop reads the
+// `von`/`nach`/`datum` query params and pre-fills the search. Date format is
+// DD.MM.YYYY. Station names are fuzzy-matched, so plain city names resolve.
+function cffTrainLink(from: string, to: string, weekendStart: Date): string {
+  const datum = format(weekendStart, "dd.MM.yyyy");
+  const params = new URLSearchParams({
+    von: from,
+    nach: to,
+    datum,
+    suche: "true",
+  });
+  return `https://www.sbb.ch/fr/acheter/pages/fahrplan/fahrplan.xhtml?${params.toString()}`;
+}
+
 export function getTransportLink(
   destinationId: string,
   weekendStart: Date
 ): TransportLink | null {
-  const omioDate = format(weekendStart, "yyyy-MM-dd");
   // Skyscanner format: YYMMDD
   const skyscannerDate = format(weekendStart, "yyMMdd");
 
@@ -19,13 +32,13 @@ export function getTransportLink(
       return {
         emoji: "🚆",
         label: "Paris → Zurich by train",
-        href: `https://www.omio.com/results/Paris/Zurich/${omioDate}?adults=1`,
+        href: cffTrainLink("Paris", "Zürich", weekendStart),
       };
     case "crans":
       return {
         emoji: "🚆",
         label: "Paris → Geneva by train",
-        href: `https://www.omio.com/results/Paris/Geneva/${omioDate}?adults=1`,
+        href: cffTrainLink("Paris", "Genève", weekendStart),
       };
     case "milan":
       return {
