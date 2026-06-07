@@ -105,15 +105,7 @@ export function DestinationCard({ destination }: Props) {
             </p>
             <WeekendCalendar
               selectedWeekend={selectedWeekend}
-              onSelect={(weekend) => {
-                if (weekend) {
-                  track("weekend_selected", {
-                    destination: destination.id,
-                    weekend: weekend.id,
-                  });
-                }
-                setSelectedWeekend(weekend);
-              }}
+              onSelect={setSelectedWeekend}
             />
           </div>
 
